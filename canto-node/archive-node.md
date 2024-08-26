@@ -121,10 +121,17 @@ State breaking software upgrades took place at blocks:
 * 2669495 (v5.0.0)
 * 5144100 (v6.0.0)
 * 6055770 (v7.0.0)
+* 10848200 (v8.0.0)
+* 10849448 (v8.1.1)
 
 {% hint style="warning" %}
 **Important**: v2.0.0 may cause AppHash errors at blocks that contained governance proposals (e.g. 804212). To avoid this, build from the `thomas/archive-patch` branch instead.
 {% endhint %}
+
+{% hint style="warning" %}
+**Important:** v8.0.0 may cause AppHash errors around blocks 10848200 and 10849448. This is because, up to block 10849447, `cantod` should not be run with the `--chain-id` parameter, while it becomes required from block 10849448 onward. To avoid AppHash errors, ensure you run v8.0.0 without `--chain-id` and with `--halt-height 10849447`.
+{% endhint %}
+
 
 Upon reaching these blocks while syncing an archive node, the node will halt and throw an error every time it restarts until you update the binary. To do so, follow these steps:
 
